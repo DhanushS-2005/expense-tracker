@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class="fas fa-wallet"></i>
+        <span>ExpenseTracker</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">
+          <i class="fas fa-home"></i>
+          Dashboard
+        </a>
+        <a href="add.html">
+          <i class="fas fa-plus-circle"></i>
+          Add Transaction
+        </a>
+        <a href="history.html">
+          <i class="fas fa-history"></i>
+          History
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div class="balance-card">
+        <h1>Total Balance</h1>
+        <h2 id="balance">₹0</h2>
+        <p class="balance-date" id="currentDate"></p>
+      </div>
+      <div class="quick-stats">
+        <button class="btn btn-primary" onclick="location.href='add.html'">
+          <i class="fas fa-plus"></i>
+          Add Transaction
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+      <div class="stat-card income-stat fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Total Income</h3>
+          <p id="income">₹0</p>
+          <small>This month: <span id="monthIncome">₹0</span></small>
+        </div>
+      </div>
+      
+      <div class="stat-card expense-stat fade-in">
+        <div class="stat-icon">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Total Expense</h3>
+          <p id="expense">₹0</p>
+          <small>This month: <span id="monthExpense">₹0</span></small>
+        </div>
+      </div>
+      
+      <div class="stat-card fade-in">
+        <div class="stat-icon" style="background: rgba(248, 150, 30, 0.2); color: var(--warning);">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Transactions</h3>
+          <p id="totalTransactions">0</p>
+          <small>This month: <span id="monthTransactions">0</span></small>
+        </div>
+      </div>
+      
+      <div class="stat-card fade-in">
+        <div class="stat-icon" style="background: rgba(67, 97, 238, 0.2); color: var(--primary);">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Net Monthly</h3>
+          <p id="netMonthly">₹0</p>
+          <small>Savings Rate: <span id="savingsRate">0%</span></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-section">
+      <div class="chart-container fade-in">
+        <h3><i class="fas fa-chart-pie"></i> Expense Distribution</h3>
+        <canvas id="expenseChart" height="250"></canvas>
+      </div>
+      
+      <div class="chart-container fade-in">
+        <h3><i class="fas fa-chart-bar"></i> Monthly Overview</h3>
+        <canvas id="monthlyChart" height="250"></canvas>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="chart-container recent-transactions fade-in">
+      <h3><i class="fas fa-clock"></i> Recent Transactions</h3>
+      <ul id="recentTransactions" class="transaction-list">
+        <!-- Recent transactions will be loaded here -->
+      </ul>
+      <div id="emptyRecent" class="empty-state" style="display: none;">
+        <i class="fas fa-receipt"></i>
+        <h3>No Recent Transactions</h3>
+        <p>Add your first transaction to see it here</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h3>Edit Transaction</h3>
+      <form id="editForm">
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="editText" required>
+        </div>
+        <div class="form-group">
+          <label>Amount (₹)</label>
+          <input type="number" id="editAmount" required>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="editDate" required>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select id="editType" required>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeEditModal()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Update Transaction
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
