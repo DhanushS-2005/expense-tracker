@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="add.html">Add / Spend</a>
+  <a href="history.html">History</a>
+</nav>
+
+<div class="container">
+  <h1>Dashboard</h1>
+
+  <h2 id="balance">₹0</h2>
+
+  <div class="summary">
+    <div class="income">
+      <h4>Income</h4>
+      <p id="income">₹0</p>
+    </div>
+    <div class="expense">
+      <h4>Expense</h4>
+      <p id="expense">₹0</p>
+    </div>
+  </div>
+
+  <canvas id="expenseChart"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add / Spend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="add.html">Add / Spend</a>
+  <a href="history.html">History</a>
+</nav>
+
+<div class="container">
+  <h1>Add / Spend</h1>
+
+  <!-- ADD INCOME -->
+  <h3>➕ Add Income</h3>
+  <form id="incomeForm">
+    <input type="text" id="incomeText" placeholder="Income Source" required>
+    <input type="number" id="incomeAmount" placeholder="Amount" required>
+    <input type="date" id="incomeDate" required>
+    <button>Add Income</button>
+  </form>
+
+  <hr>
+
+  <!-- SPEND EXPENSE -->
+  <h3>➖ Spend Expense</h3>
+  <form id="expenseForm">
+    <input type="text" id="expenseText" placeholder="Expense Reason" required>
+    <input type="number" id="expenseAmount" placeholder="Amount" required>
+    <input type="date" id="expenseDate" required>
+    <button>Spend</button>
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
